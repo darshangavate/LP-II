@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Department Timetable</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f6fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #17365d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            background: #254b77;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd27d;
+        }
+
+        .container {
+            width: 90%;
+            margin: 25px auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        main {
+            flex: 4;
+            min-width: 0;
+        }
+
+        aside {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        section {
+            background: white;
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        h2 {
+            color: #17365d;
+            border-bottom: 2px solid #d59a43;
+            padding-bottom: 8px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #254b77;
+        }
+
+        /* Table Design */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        caption {
+            font-weight: bold;
+            padding: 10px;
+            color: #17365d;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #17365d;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #eef3f9;
+        }
+
+        tr:hover td {
+            background: #dce8f7;
+        }
+
+        /* Div-based Timetable */
+        .row {
+            display: flex;
+        }
+
+        .cell {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #cbd5e1;
+        }
+
+        .heading {
+            background: #17365d;
+            color: white;
+            font-weight: bold;
+        }
+
+        .row:nth-child(odd) {
+            background: #eef3f9;
+        }
+
+        audio, video {
+            display: block;
+            margin: 12px 0;
+        }
+
+        footer {
+            background: #17365d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>IT Department Timetable</h1>
+        <p>Final Year B.Tech - Information Technology</p>
+    </header>
+
+    <nav>
+        <a href="#timetable">Timetable</a>
+        <a href="#infrastructure">Infrastructure</a>
+        <a href="#divtable">Div Layout</a>
+        <a href="#media">Multimedia</a>
+    </nav>
+
+    <div class="container">
+
+        <main>
+
+            <!-- HTML Timetable -->
+            <section id="timetable">
+                <h2>Class Timetable</h2>
+
+                <table>
+                    <caption>Final Year IT Timetable</caption>
+
+                    <tr>
+                        <th>Day</th>
+                        <th>9 - 10</th>
+                        <th>10 - 11</th>
+                        <th>11 - 12</th>
+                    </tr>
+
+                    <tr>
+                        <td>Monday</td>
+                        <td>HTML</td>
+                        <td>CSS</td>
+                        <td>JavaScript</td>
+                    </tr>
+
+                    <tr>
+                        <td>Tuesday</td>
+                        <td colspan="2">Web Development Lab</td>
+                        <td>DBMS</td>
+                    </tr>
+
+                    <tr>
+                        <td>Wednesday</td>
+                        <td rowspan="2">Project Work</td>
+                        <td>CSS</td>
+                        <td>HTML</td>
+                    </tr>
+
+                    <tr>
+                        <td>Thursday</td>
+                        <td>JavaScript</td>
+                        <td>DBMS</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Infrastructure -->
+            <section id="infrastructure">
+                <h2>University Infrastructure</h2>
+
+                <table>
+                    <tr>
+                        <th>Facility</th>
+                        <th>Quantity</th>
+                        <th>Purpose</th>
+                    </tr>
+
+                    <tr>
+                        <td>Computer Labs</td>
+                        <td>4</td>
+                        <td>Practical Sessions</td>
+                    </tr>
+
+                    <tr>
+                        <td>Library</td>
+                        <td>1</td>
+                        <td>Study and Research</td>
+                    </tr>
+
+                    <tr>
+                        <td>Seminar Hall</td>
+                        <td>2</td>
+                        <td>Presentations</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Div and Span Layout -->
+            <section id="divtable">
+                <h2>Timetable Using Div and Span</h2>
+
+                <div class="row heading">
+                    <div class="cell">Day</div>
+                    <div class="cell">9 - 10</div>
+                    <div class="cell">10 - 11</div>
+                    <div class="cell">11 - 12</div>
+                </div>
+
+                <div class="row">
+                    <div class="cell">Monday</div>
+                    <div class="cell"><span>HTML</span></div>
+                    <div class="cell"><span>CSS</span></div>
+                    <div class="cell"><span>JavaScript</span></div>
+                </div>
+
+                <div class="row">
+                    <div class="cell">Tuesday</div>
+                    <div class="cell"><span>Web Lab</span></div>
+                    <div class="cell"><span>Web Lab</span></div>
+                    <div class="cell"><span>DBMS</span></div>
+                </div>
+
+                <div class="row">
+                    <div class="cell">Wednesday</div>
+                    <div class="cell"><span>Project</span></div>
+                    <div class="cell"><span>CSS</span></div>
+                    <div class="cell"><span>HTML</span></div>
+                </div>
+
+                <div class="row">
+                    <div class="cell">Thursday</div>
+                    <div class="cell"><span>Project</span></div>
+                    <div class="cell"><span>JavaScript</span></div>
+                    <div class="cell"><span>DBMS</span></div>
+                </div>
+            </section>
+
+            <!-- Multimedia -->
+            <section id="media">
+                <h2>Multimedia</h2>
+
+                <h3>Audio</h3>
+                <audio controls>
+                    <source src="audio.mp3" type="audio/mpeg">
+                </audio>
+
+                <h3>Video</h3>
+                <video width="400" controls>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#timetable">Timetable</a></li>
+                <li><a href="#infrastructure">Facilities</a></li>
+                <li><a href="#media">Multimedia</a></li>
+            </ul>
+
+            <h3>Information</h3>
+            <p>Department: IT</p>
+            <p>Semester: VII</p>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Information Technology Department</p>
+    </footer>
+
+</body>
+</html>
