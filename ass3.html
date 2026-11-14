@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Registration</title>
+
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f3f6fa;
+        color: #333;
+    }
+
+    header, footer {
+        background: #17365d;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    nav {
+        background: #254b77;
+        text-align: center;
+        padding: 12px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin: 15px;
+    }
+
+    nav a:hover { color: #ffd27d; }
+
+    main {
+        width: 75%;
+        margin: 25px auto;
+    }
+
+    section {
+        background: white;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #00000012;
+    }
+
+    h2 {
+        color: #17365d;
+        border-bottom: 2px solid #d59a43;
+        padding-bottom: 10px;
+    }
+
+    label {
+        display: block;
+        margin-top: 12px;
+        font-weight: bold;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background: #17365d;
+        color: white;
+        border: none;
+        padding: 11px 18px;
+        border-radius: 5px;
+        margin: 12px 6px 0 0;
+        cursor: pointer;
+    }
+
+    button:hover { background: #254b77; }
+
+    .error { color: red; font-size: 13px; }
+    .success { color: green; font-weight: bold; }
+
+    .dark { background: #263445; }
+    .dark section { background: #34465c; color: white; }
+    .dark h2 { color: white; }
+
+    footer p { margin: 0; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>IT Department</h1>
+    <p>Student Registration Portal</p>
+</header>
+
+<nav>
+    <a href="#register">Registration</a>
+    <a href="#demo">DOM Features</a>
+</nav>
+
+<main>
+
+<section id="register">
+    <h2>Student Registration</h2>
+
+    <form id="form" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter full name">
+        <small class="error" id="nameError"></small>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+        <small class="error" id="emailError"></small>
+
+        <label for="phone">Mobile Number</label>
+        <input type="tel" id="phone" placeholder="10-digit number">
+        <small class="error" id="phoneError"></small>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Minimum 6 characters">
+        <small class="error" id="passwordError"></small>
+
+        <label for="branch">Select Branch</label>
+        <select id="branch">
+            <option value="">Select Branch</option>
+            <option>IT</option>
+            <option>Computer</option>
+            <option>AI & DS</option>
+        </select>
+        <small class="error" id="branchError"></small>
+
+        <br>
+        <button type="submit">Register</button>
+        <button type="reset">Clear</button>
+
+        <p id="result" class="success"></p>
+    </form>
+</section>
+
+<section id="demo">
+    <h2>DOM Manipulation</h2>
+
+    <p id="message">Welcome to our registration portal!</p>
+
+    <button type="button" onclick="changeText()">Change Text</button>
+    <button type="button" onclick="changeStyle()">Change Style</button>
+    <button type="button" onclick="toggleTheme()">Dark Theme</button>
+    <button type="button" onclick="toggleInfo()">Show/Hide Info</button>
+    <button type="button" onclick="startTimer()">Start Countdown</button>
+
+    <p id="info" hidden>
+        This portal is developed using HTML, CSS and JavaScript.
+    </p>
+
+    <h3 id="timer">Countdown: 10</h3>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 IT Department</p>
+</footer>
+
+<script>
+    const $ = id => document.getElementById(id);
+
+    const fields = ["name", "email", "phone", "password", "branch"];
+
+    function validate() {
+        let valid = true;
+
+        let errors = {
+            name: $("name").value.trim().length < 2 ? "Enter a valid name" : "",
+            email: !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("email").value)
+                   ? "Enter a valid email" : "",
+            phone: !/^[0-9]{10}$/.test($("phone").value)
+                   ? "Enter a 10-digit number" : "",
+            password: $("password").value.length < 6
+                      ? "Minimum 6 characters required" : "",
+            branch: !$("branch").value ? "Select a branch" : ""
+        };
+
+        fields.forEach(id => {
+            $(id + "Error").textContent = errors[id];
+            if (errors[id]) valid = false;
+        });
+
+        return valid;
+    }
+
+    $("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        $("result").textContent = "";
+
+        if (validate()) {
+            $("result").textContent =
+                "Registration successful! Welcome, " + $("name").value.trim();
+        }
+    });
+
+    fields.forEach(id => {
+        $(id).addEventListener("input", validate);
+        $(id).addEventListener("change", validate);
+    });
+
+    $("form").addEventListener("reset", function() {
+        fields.forEach(id => $(id + "Error").textContent = "");
+        $("result").textContent = "";
+    });
+
+    function changeText() {
+        $("message").textContent = "Text updated using JavaScript!";
+    }
+
+    function changeStyle() {
+        $("message").style.color = "blue";
+        $("message").style.fontWeight = "bold";
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle("dark");
+    }
+
+    function toggleInfo() {
+        $("info").hidden = !$("info").hidden;
+    }
+
+    let interval;
+
+    function startTimer() {
+        clearInterval(interval);
+        let count = 10;
+        $("timer").textContent = "Countdown: " + count;
+
+        interval = setInterval(function() {
+            count--;
+            $("timer").textContent = "Countdown: " + count;
+
+            if (count === 0) clearInterval(interval);
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
